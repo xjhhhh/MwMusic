@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../css/audio.css" rel="stylesheet" />
+    <script src="../script/jquery-3.2.1.js"></script>
+</head>
+<body style="height: 999px">
+    <input type="button" id="btnTest" value="测试" />
+    <div class="audio-box">
+        <div class="audio-container">
+            <div class="audio-view">
+                <div class="audio-cover"></div>
+                <div class="audio-body">
+                    <h3 class="audio-title">未知歌曲</h3>
+                    <div class="audio-backs">
+                        <div class="audio-this-time">00:00</div>
+                        <div class="audio-count-time">00:00</div>
+                        <div class="audio-setbacks">
+                            <i class="audio-this-setbacks">
+                                <span class="audio-backs-btn"></span>
+                            </i>
+                            <span class="audio-cache-setbacks"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="audio-btn">
+                    <div class="audio-select">
+                        <div class="audio-prev"></div>
+                        <div class="audio-play"></div>
+                        <div class="audio-next"></div>
+                        <div class="audio-menu"></div>
+                        <div class="audio-volume"></div>
+                    </div>
+                    <div class="audio-set-volume">
+                        <div class="volume-box">
+                            <i><span></span></i>
+                        </div>
+                    </div>
+                    <div class="audio-list">
+                        <div class="audio-list-head">
+                            <p>歌单</p>
+                            <span class="menu-close">关闭</span>
+                        </div>
+                        <ul class="audio-inline">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!--<script src="../script/jquery-3.2.1.js"></script>-->
+<script src="../script/audio.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var song = eval('(' + "[]" + ')');
+        $.getJSON("ashx/front_getMusic.ashx", function (data) {
+            var s = song;   //局部变量接收全局变量
+            $.each(data, function (i, obj) {
+                var val = {
+                    "cover": obj.Img,
+                    "src": obj.Value,
+                    "title": obj.Title + " - " + obj.Singer
+                };
+                s.push(val);
+            })
+            song = s;
+            var audioFn = audioPlay({
+                song: song,
+                autoPlay: true //是否立即播放第一首，autoPlay为true且song为空，会alert文本提示并退出
+            });
+
+            $("#btnTest").click(function () {        //测试，向歌单添加音乐
+                var i = 0;
+                for (var s in song) {
+                    if (song[s].title == "DJ小可 - 麦阿喜") {
+                        i++;
+                    }0
+                }
+                if (i > 2)
+                    return;
+                else {
+                    audioFn.newSong({
+                        'cover': '../images/max.jpg',
+                        'src': '../music/DJ小可 - 麦阿喜.mp3',
+                        'title': 'DJ小可 - 麦阿喜'
+                    }, true);
+                }
+            });
+
+        });
+
+        //var song = [{
+        //    'cover': '../images/zgz.jpg',
+        //    'src': '../music/岑宁儿 - 追光者.mp3',
+        //    'title': '岑宁儿 - 追光者'
+        //    },
+        //    {
+        //        'cover': '../images/wxsj.jpg',
+        //        'src': '../music/方大同 - 特别的人.mp3',
+        //        'title': '方大同 - 特别的人'
+        //    },
+        //    {
+        //        'cover': '../images/kl.jpg',
+        //        'src': '../music/赵紫骅 - 可乐.mp3',
+        //        'title': '赵紫骅 - 可乐'
+        //    },
+        //    {
+        //        'cover': '../images/wmbyy.jpg',
+        //        'src': '../music/大壮 - 我们不一样.mp3',
+        //        'title': '大壮 - 我们不一样'
+        //    },
+        //    {
+        //        'cover': '../images/nlch.jpg',
+        //        'src': '../music/金南玲 - 逆流成河.mp3',
+        //        'title': '金南玲 - 逆流成河'
+        //    },
+        //    {
+        //        'cover': '../images/9420.jpg',
+        //        'src': '../music/麦小兜 - 9420.mp3',
+        //        'title': '麦小兜 - 9420'
+        //    }
+        //];
+
+        //var audioFn = audioPlay({
+        //    song: song,
+        //    autoPlay: true //是否立即播放第一首，autoPlay为true且song为空，会alert文本提示并退出
+        //});
+
+        /* 向歌单中添加新曲目，第二个参数true为新增后立即播放该曲目，false则不播放 */
+        //audioFn.newSong({
+        //    'cover': '../images/max.jpg',
+        //    'src': '../music/DJ小可 - 麦阿喜.mp3',
+        //    'title': 'DJ小可 - 麦阿喜'
+        //}, false);
+
+        /* 暂停播放 */
+        //audioFn.stopAudio();
+
+        /* 开启播放 */
+        //audioFn.playAudio();
+
+        /* 选择歌单中索引为3的曲目(索引是从0开始的)，第二个参数true立即播放该曲目，false则不播放 */
+        //audioFn.selectMenu(3,true);
+
+        /* 查看歌单中的曲目 */
+        //console.log(audioFn.song);
+
+        /* 当前播放曲目的对象 */
+        //console.log(audioFn.audio);
+    });
+</script>
+</html>

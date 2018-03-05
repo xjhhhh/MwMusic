@@ -1,0 +1,72 @@
+﻿#div-ul-navigation2 {
+	width: 100%;
+	height: 30px;
+}
+
+#ul-navigation2 {
+	position: absolute;
+	left: 25%;
+	width: auto;
+	margin: 0;
+	padding: 0;
+	display: block;
+	list-style-type: none;
+}
+
+.li-navigation2 {
+	display: list-item;
+	float: left;
+}
+
+.header-a-navigation2 {
+	font-size: 14px;
+	display: block;
+	margin: 0 45px;
+	height: 30px;
+	text-align: center;
+	cursor: pointer;
+	line-height: 30px;
+}
+
+.li_hover {
+	color: green;
+}
+
+#foot {
+	width: 80%;
+	height: 120px;
+	margin: 0 auto;
+}
+
+#f_blank {
+	width: 100%;
+	height: 50px;
+	margin: 0;
+}
+
+#f_navigation p {
+	color: gray;
+	text-align: center;
+	font-size: 14px;
+	line-height: 25px;
+}
+
+#f_navigation p a {
+	cursor: pointer;
+}
+
+#f_navigation p a:hover {
+	text-decoration: underline;
+}
+
+/*.a_hover {
+    text-decoration: underline;
+}*/
+
+#divDialog p {
+	display: block;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}

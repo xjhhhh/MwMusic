@@ -1,0 +1,438 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="../css/player.css" rel="stylesheet" />
+    <style>
+        .logo {
+            float: left;
+            width: 200px;
+            height: 100%;
+            padding-left: 20px;
+            padding: 5px 0px 5px 20px;
+            box-sizing: border-box;
+        }
+
+            .logo span {
+                width: 100%;
+                height: 100%;
+                background: url(../images/logo_w.png) no-repeat 0 50%;
+                background-size: contain;
+                display: block;
+            }
+
+        .search {
+            position: absolute;
+            left: 250px;
+            top: 13px;
+            width: 230px;
+            height: 30px;
+            background: #646464;
+            border-radius: 15px;
+        }
+
+        .s_ico {
+            width: 30px;
+            height: 30px;
+            float: left;
+        }
+
+        #a_search {
+            float: right;
+            display: block;
+            width: 18px;
+            height: 30px;
+            background: url(../images/search.png) no-repeat 0 50%;
+            cursor: pointer;
+        }
+
+        .txt_search {
+            position: absolute;
+            left: 30px;
+            width: 200px;
+            height: 30px;
+        }
+
+        .txtsearch {
+            width: 180px;
+            height: 24px;
+            padding: 3px;
+            border: 0;
+            background-color: transparent;
+            outline: none;
+            color: #fff;
+        }
+
+            .txtsearch::-webkit-input-placeholder {
+                color: #999;
+            }
+
+        .login {
+            position: absolute;
+            top: 0;
+            right: 30px;
+            width: 200px;
+            height: 56px;
+            text-align: right;
+            line-height: 56px;
+        }
+
+        #alogin {
+            color: #fff;
+            cursor: pointer;
+            padding-right: 35px;
+        }
+
+        #user_ico {
+            position: absolute;
+            right: 0;
+            top: 13px;
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            border-radius: 15px;
+            /*background:#999;*/
+        }
+
+        .d_frame {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        #frame {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div id="top">
+            <div class="logo">
+                <span>
+                    <a href="#"></a>
+                </span>
+            </div>
+            <div class="search">
+                <div class="s_ico">
+                    <a id="a_search"></a>
+                </div>
+                <div class="txt_search">
+                    <input type="text" id="txtSearch" class="txtsearch" placeholder="音乐/歌单/专辑" />
+                    <!-- //???placeholder-->
+                </div>
+            </div>
+            <div class="login">
+                <a id="alogin">登录</a><span id="user_ico"></span>
+            </div>
+        </div>
+        <div id="middle">
+            <div id="main_wrap">
+                <div id="main_left">
+                    <div class="menu-outer">
+                        <ul id="menu_controller">
+                            <li class="current" id="l_playing">
+                                <a>
+                                    <i class="icon-play"></i>
+                                    正在播放
+                                </a>
+                            </li>
+                            <li id="l_history">
+                                <a>
+                                    <i class="icon-history"></i>
+                                    播放历史
+                                </a>
+                            </li>
+                            <li id="l_collect">
+                                <a>
+                                    <i class="icon-collects"></i>
+                                    我收藏的单曲
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="create-outer">
+                        <div class="create-title">
+                            <h3>我创建的歌单</h3>
+                            <span>
+                                <a class="icon-addcollect" id="a_addCollect" title="新建歌单"></a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="create_lists">
+                        <div id="d_collectList" class="d-collectList">
+                            <div id="d_collectListCont" class="d-collectListCont">
+                                <div class="d_no_collect"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="main_middle">
+                    <!--正在播放-->
+                    <div id="d_playingList" class="mainpage">
+                        <div class="d-playlist-header">
+                            <div class="d-row-item">
+                                <div class="d-row-item-col c1">歌曲<span>(30)</span></div>
+                                <div class="d-row-item-co1 c2">演唱者</div>
+                                <div class="d-row-item-co1 c3">专辑</div>
+                            </div>
+                        </div>
+                        <div class="d-playlist-body">
+                            <div id="d_playListView" class="d-playListView">
+                                <!--下拉栏-->
+                                <div id="d_scrollBar" class="d-scrollBar d-scrollBar-y">
+                                    <div id="d_scrollbar_arrow_up" class="d-scrollbar-y-arrow-up">
+                                        <a href="javascript:void('up')">up</a>
+                                    </div>
+                                    <div id="d_scrollbar_arrow_down" class="d-scrollbar-y-arrow-down">
+                                        <a href="javascript:void('down')">down</a>
+                                    </div>
+                                    <div id="d_scrollbar_track" class="d-scrollbar-y-track">
+                                        <div id="d_scrollbar_drag" class="d-scrollbar-y-drag" style="height: 127.78px; transform: translateX(0px) translateY(0px) translateZ(0px);">
+                                            <div class="d-scrollbar-y-drag-top">
+                                            </div>
+                                            <div class="d-scrollbar-y-drag-center">
+                                            </div>
+                                            <div class="d-scrollbar-y-drag-bottom">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--歌曲列表-->
+                                <div class="d-scroll-view-content" style="height:100%;">
+                                    <!--列表-->
+                                    <div id="d_playlistViewCont">
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">sss</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">sss</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">aaa</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">vvv</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">sasd</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">asdasd</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">asdas</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">qweqw</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">dfgsf</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">adsfsad</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">sdfasf</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">21312as</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">asdsdf234</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">asdf234</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">asdas</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">qweqw</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">dfgsf</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">adsfsad</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">sdfasf</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">21312as</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">asdsdf234</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">asdf234</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">asdas</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">qweqw</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">dfgsf</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">adsfsad</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">sdfasf</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">21312as</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">asdsdf234</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                        <div class="d-m-row-item d-m-track-item">
+                                            <div class="d-track-main">asdf234</div>
+                                            <div class="d-roam-wrap"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-playlist-bottom"></div>
+                    </div>
+                    <!--播放历史-->
+                    <div id="d_historyList">
+                    </div>
+                    <!--我收藏的单曲-->
+                    <div id="d_collectsList">
+                    </div>
+                    <!--歌单-->
+                    <div id="d_playList">
+                    </div>
+                </div>
+                <div id="main_right"></div>
+            </div>
+            <div class="slist" id="s_list">
+                <div class="title">歌曲列表</div>
+                <ul class="s_list"></ul>
+            </div>
+        </div>
+        <div id="bottom">
+            <div id="b_player">
+                <div class="player-info" data-spm="1996860142">
+                    <div class="music-info">
+                        <div id="b_musicInfo" class="player-music-info">
+                            <a id="a_musicTitle" href="/song/1796466190" title="带你去旅行" target="_blank">带你去旅行</a> - <a id="a_singer" href="http://www.xiami.com/artist/2110230813" target="_blank" title="校长">校长</a>
+                        </div>
+                        <div class="music-controls">
+                            <a id="a_collect" class="icon-collect" data-sid="2110879" title="收藏"></a>
+                            <a id="a_share" class="icon-share" data-sid="2110879" title="分享"></a>
+                            <a id="a_comment" class="icon-comment" data-sid="2110879" title="评论"></a>
+                            <a id="a_more" class="icon-more" data-sid="2110879" title="更多" data-downloadjson="%7B%22LOW%22%3A%22NEED_PAY%22%2C%22HIGH%22%3A%22NEED_PAY%22%7D"></a>
+                        </div>
+                    </div>
+                    <div class="play-process">
+                        <div class="play-time" id="d_playTime">00:00</div>
+                        <div class="play-progress">
+                            <div class="progress" id="d_playProgress">
+                                <!--<div class="loading" id="proc-load" style="width: 50%;"></div>-->
+                                <div class="playing" id="play_prog" style="width: 0%;"></div>
+                            </div>
+                            <div class="panel" id="d_playerBox">
+                                <a class="a_playProg" id="a_playProg" style="left: 0px;"></a>
+                            </div>
+                        </div>
+                        <div class="play-count" id="d_countTime">03:45</div>
+                    </div>
+                </div>
+                <div class="play-controls">
+                    <a id="a_prev" class="btn-prev"></a>
+                    <a id="a_play" class="btn-play pause-btn"></a>
+                    <a id="a_next" class="btn-next"></a>
+                    <div class="play-state">
+                        <a id="a_playState" class="state-order" title="顺序播放"></a>
+                    </div>
+                </div>
+                <div class="play-volume">
+                    <div id="volume">
+                        <div id="d_volumeSpeaker" class="volume-on"></div>
+                        <div id="d_volumeRange" class="volume-wrap">
+                            <div class="volume-box" id="d_vol_box">
+                                <div class="volume-size" id="d_vol_size" style="width: 15%">
+                                </div>
+                            </div>
+                            <div class="volume-control" id="vol-con">
+                                <a class="volume-dot" id="vol-dot" style="left: 15%;"></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="d_frame">
+        <iframe id="frame" src="front_framelogin.html"></iframe>
+    </div>-->
+    <script src="../script/jquery-3.2.1.js"></script>
+    <script src="../script/data.js"></script>
+    <script src="../script/music.js"></script>
+    <script>
+
+        $(function () {
+            myMusic();
+
+        });
+
+
+        function event() {
+            var $alogin = $("#alogin");
+            var $user_ico = $("#user_ico");
+
+            $alogin.click(function () {
+                alert("Wq");
+            });
+
+
+        }
+
+
+
+    </script>
+</body>
+</html>

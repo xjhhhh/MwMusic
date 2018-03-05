@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../script/jquery-3.2.1.js"></script>
+    <script src="../script/front-recommend.js"></script>
+    <link href="../font/css/ionicons.min.css" rel="stylesheet" />
+    <!--<script src="script/jquery-3.2.1.js"></script>
+    <script src="script/front-recommend.js"></script>
+    <link href="font/css/ionicons.min.css" rel="stylesheet" />-->
+
+    <style>
+        body{
+            margin:0;
+            padding:0;
+        }
+        #Main_Content {
+            width: 80%;
+            margin: 0 auto;
+        }
+        #divSwitch {
+            position:relative;
+            width: 100%;
+            height: 300px;
+            background: black;
+            /*-moz-border-radius: 30px;*/
+            /*-webkit-border-radius: 10px;*/
+            /*border-radius: 20px;*/
+        }
+        #div-Recommend {
+            width: 100%;
+            height: 400px;
+            background: green;
+            /*-moz-border-radius: 30px;*/
+            /*-webkit-border-radius: 10px;*/
+            border-radius: 10px;
+        }
+        #div-left{
+            position:absolute;
+            left:-5%;
+            top:119px;
+            width:39px;
+            height:80px;
+            text-align:center;
+            cursor:pointer;
+            z-index:1;
+        }
+        #div-right{
+            position:absolute;
+            right:-5%;
+            top:119px;
+            width:39px;
+            height:80px;
+            text-align:center;
+            cursor:pointer;
+            z-index:1;
+        }
+        .dots {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 20px;
+            text-align: center;
+            /*background:pink;*/
+        }
+        .dots a{
+            margin:0 5px;
+            width:20px;
+            height:20px;
+            display:inline-block;
+        }
+        .a_round {
+            cursor: pointer;
+            background: url(../images/a_round_w.png);
+        }
+        .a_click_style{
+            cursor:pointer;
+            background:url(../images/a_round_r.png);
+        }
+        .a_hover_style{
+            cursor:pointer;
+            background:url(../images/a_round_r.png);
+        }
+    </style>
+    <script>
+        
+    </script>
+</head>
+<body>
+    <div id="Main_Content">
+        <div id="divSwitch">
+            <a id="link_img"><!--此处是轮播图片，运行后显示--></a>
+            <div id="div-left">
+                <img id="img-prev" src="../images/prev_w.png" />
+            </div>
+            <div id="div-right">
+                <img id="img-next" src="../images/next_w.png" />
+            </div>
+            <div class="dots">
+            </div>
+        </div>
+        <div id="div-Recommend">
+
+        </div>
+        <div></div>
+    </div>
+</body>
+</html>

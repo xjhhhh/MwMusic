@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../script/jquery-3.2.1.js"></script>
+    <style>
+        body{
+
+        }
+    </style>
+</head>
+<body>
+    <!--登录背景-->
+    <div id="openModal" class="modalDialog">
+    </div>
+    <!--登录小窗口-->
+    <div id="divLogin">
+        <a id="Login_close" class="aClose">X</a>
+        <div class="Login_title">
+            <b style="color: white; line-height: 40px; position: absolute; left: 20px;">登录</b>
+        </div>
+        <div class="">
+            <p class="pct" style="padding-top: 20px;">
+                <input type="text" class="txts" id="txtName" placeholder="请输入帐号" />
+            </p>
+            <p class="pct">
+                <input type="password" class="txts" id="txtPwd" placeholder="请输入密码" />
+            </p>
+            <p style="width: 234px; margin: 0 auto;">
+                <a class="al" id="aRegister" style="float: left; padding-left: 20px;">免费注册</a>
+                <a class="al" id="aFindPwd" style="float: right; padding-right: 20px;">忘记密码?</a>
+            </p>
+            <p class="pct" style="padding-top: 40px;">
+                <input type="button" class="aLogin" value="登 录" />
+            </p>
+        </div>
+    </div>
+    <!--注册小窗口-->
+    <div id="divRegister">
+        <a id="Login_close2" class="aClose">X</a>
+        <div class="Login_title">
+            <b style="color: white; line-height: 40px; position: absolute; left: 20px;">免费注册</b>
+        </div>
+        <div class="">
+            <p class="pct" style="padding-top: 20px;">
+                <input type="text" class="txts" id="txtRname" placeholder="请输入帐号" />
+            </p>
+            <p class="pct">
+                <input type="password" class="txts" id="txtRpwd" placeholder="请输入登录密码" />
+            </p>
+
+            <p class="pct" style="padding-top: 40px;">
+                <input type="button" class="aLogin" value="注 册" /><br />
+                <a class="al aRlogin">返回登录</a>
+            </p>
+        </div>
+    </div>
+    <!--找回密码小窗口-->
+    <div id="divFindPwd">
+        <a id="Login_close3" class="aClose">X</a>
+        <div class="Login_title">
+            <b style="color: white; line-height: 40px; position: absolute; left: 20px;">找回密码</b>
+        </div>
+        <div class="">
+            <p class="pct" style="padding-top: 20px;">
+                <input type="text" class="txts" id="txtFname" placeholder="请输入要找回的帐号" />
+            </p>
+            <p class="pct">
+                <input type="text" class="txts" id="txtNum" placeholder="请输入绑定的手机号码" />
+            </p>
+            <p class="pct">
+                <input type="text" class="txts" style="width:140px" id="txtCode" placeholder="请输入你获取的验证码" />
+                <input type="button"  id="btnGetCode" value="获取验证码" />
+            </p>
+            
+            <p class="pct" style="padding-top: 20px;">
+                <input type="button" class="aLogin" value="立即找回" /><br />
+                <a class="al aRlogin">返回登录</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

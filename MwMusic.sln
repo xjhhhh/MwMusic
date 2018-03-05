@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "MwMusicWeb", "MwMusicWeb\", "{0606FC49-8790-43B4-89EF-905F86E6BB2B}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{96aea3d9-a194-4bab-a94c-e2dfef525589}|BLL.dll;{03087626-639d-4e99-a7e9-0b07ce0b098f}|Model.dll;{FF458A1F-A63F-4EE7-9718-764700D1FFC6}|DAL.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_46915"
+		Debug.AspNetCompiler.PhysicalPath = "MwMusicWeb\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_46915\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_46915"
+		Release.AspNetCompiler.PhysicalPath = "MwMusicWeb\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_46915\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "46915"
+		SlnRelativePath = "MwMusicWeb\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{03087626-639D-4E99-A7E9-0B07CE0B098F} = {03087626-639D-4E99-A7E9-0B07CE0B098F}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MwMusicBLL", "BLL\MwMusicBLL.csproj", "{96AEA3D9-A194-4BAB-A94C-E2DFEF525589}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FF458A1F-A63F-4EE7-9718-764700D1FFC6} = {FF458A1F-A63F-4EE7-9718-764700D1FFC6}
+		{03087626-639D-4E99-A7E9-0B07CE0B098F} = {03087626-639D-4E99-A7E9-0B07CE0B098F}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MwMusicModel", "Model\MwMusicModel.csproj", "{03087626-639D-4E99-A7E9-0B07CE0B098F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MwMusicDAL", "DAL\MwMusicDAL.csproj", "{FF458A1F-A63F-4EE7-9718-764700D1FFC6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{03087626-639D-4E99-A7E9-0B07CE0B098F} = {03087626-639D-4E99-A7E9-0B07CE0B098F}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0606FC49-8790-43B4-89EF-905F86E6BB2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0606FC49-8790-43B4-89EF-905F86E6BB2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0606FC49-8790-43B4-89EF-905F86E6BB2B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{0606FC49-8790-43B4-89EF-905F86E6BB2B}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{96AEA3D9-A194-4BAB-A94C-E2DFEF525589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96AEA3D9-A194-4BAB-A94C-E2DFEF525589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96AEA3D9-A194-4BAB-A94C-E2DFEF525589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96AEA3D9-A194-4BAB-A94C-E2DFEF525589}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03087626-639D-4E99-A7E9-0B07CE0B098F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03087626-639D-4E99-A7E9-0B07CE0B098F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03087626-639D-4E99-A7E9-0B07CE0B098F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03087626-639D-4E99-A7E9-0B07CE0B098F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF458A1F-A63F-4EE7-9718-764700D1FFC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF458A1F-A63F-4EE7-9718-764700D1FFC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF458A1F-A63F-4EE7-9718-764700D1FFC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF458A1F-A63F-4EE7-9718-764700D1FFC6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
