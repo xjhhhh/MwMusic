@@ -112,7 +112,7 @@ li {
     list-style: none;
 }
 
-.icon-play, .icon-history, .icon-collects, .icon-addcollect {
+.icon-play, .icon-history, .icon-collects, .icon-addcollect,.icon-track-fav,.icon-track-more,.icon-track-delete {
     background-image: url(../images/b.png);
     background-repeat: no-repeat;
 }
@@ -328,6 +328,67 @@ li {
     -webkit-user-select:none;
 }
 
+.d-track-all{
+    height:30px;
+    width:100%;
+    line-height:30px;
+    position:relative;
+    padding-left:38px;
+}
+
+.d-all-chk{
+    position:absolute;
+    left:0;
+    height:16px;
+    padding-top:7px;
+    padding-bottom:7px;
+    padding-left:10px;
+    padding-right:10px;
+    line-height:0;
+}
+
+.d-all-item{
+    float:left;
+    height:30px;
+    padding-right:10px;
+}
+
+.d-all-item a{
+    display:block;
+    text-indent:38px;
+    cursor:pointer;
+    color:#333;
+    text-decoration:none;
+}
+
+.icon-tracks-delete, .icon-tracks-fav, .icon-tracks-more, .icon-tracks-add {
+    background: url('../images/track_control.png') no-repeat;
+    width:73px;
+    height:30px;
+}
+
+.icon-tracks-delete{
+    background-position:0 0;
+}
+
+.icon-tracks-fav{
+    background-position:-150px 0;
+}
+
+.icon-tracks-more{
+    background-position:-348px 0;
+}
+
+.icon-tracks-add{
+    background-position:-225px 0;
+    width:120px;
+    height:30px;
+}
+
+
+
+
+
 .d-scroll-view-content{
     position:absolute;
     left:0;
@@ -356,12 +417,40 @@ li {
     color:#333;
 }
 
+.d-m-current-item .d-track-main{
+    border-bottom:0;
+}
+
 .d-roam-wrap{
     display:none;
     padding-left:31px;
     padding-right:36px;
 }
 
+.d-m-current-item .d-roam-wrap{
+    display:block;
+}
+
+.d-roam-wrap .d-roam-head{
+    padding-left:41px;
+    height:41px;
+}
+
+.a-roam-open {
+    background: url('../images/roam.png') no-repeat 0 0;
+    display:block;
+    width: 88px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 30px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.a-roam-open:hover{
+    background-image: url('../images/hroam.png') ;
+}
 
 
 #d_playlistViewCont{
@@ -372,6 +461,192 @@ li {
 ::-webkit-scrollbar{
     display:none;
 }
+
+.d-item-chks{
+    position:absolute;
+    left:0;
+    height:16px;
+    padding:12px 5px 12px 10px;
+    line-height:0;
+}
+
+.item-chk{
+    -webkit-appearance:none;
+    background:url(../images/b.png) no-repeat 0 0;
+    background-position:-1px -710px;
+}
+
+input[type=checkbox]{
+    cursor:pointer;
+    height:16px;
+    width:16px;
+    outline:none;
+}
+
+input[type=checkbox]:hover{
+    background-position:-19px -710px;
+}
+
+input[type=checkbox]:checked{
+    background-position:-37px -710px;
+}
+
+input[type=checkbox]:disabled{
+    background-position:-55px -710px;
+}
+
+.d-item-id{
+    position:absolute;
+    width:36px;
+    height:41px;
+    left:31px;
+    top:0;
+    text-align:center;
+}
+
+.d-item-id em{
+    font-family:Arial;
+    color:#aaa;
+    font-style:normal;
+}
+
+.d-m-track-item:hover{
+    background-color:#F5F5F5;
+}
+
+.d-m-current-item{
+    background-color:#f0f0f0;
+}
+
+.d-m-current-item .d-item-id em {
+    cursor: default !important;
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin: 14px 0 14px 10px;
+    overflow: hidden;
+    font-size: 0;
+    background-image: url('../images/cplay.png');
+}
+
+.play .d-m-current-item .d-item-id em {
+    background: url('../images/play_sort.gif') no-repeat 0 0;
+    cursor:default!important;
+}
+
+.d-m-current-item .d-item-id em:hover {
+    cursor: default !important;
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin: 14px 0 14px 10px;
+    overflow: hidden;
+    font-size: 0;
+    background-image:none;
+}
+
+.d-m-track-item:hover .d-item-id em {
+    cursor:pointer;
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin: 11px 9px;
+    overflow: hidden;
+    font-size: 0;
+    background: url('../images/hplay.png') no-repeat 0 0px;
+}
+
+.d-m-track-item:hover .d-item-id em:hover {
+    cursor:pointer;
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin: 11px 9px;
+    overflow: hidden;
+    font-size: 0;
+    background: url('../images/hplay.png') no-repeat 0 -18px;
+}
+
+.d-item-body{
+    padding-left:72px;
+    padding-right:110px;
+    overflow:hidden;
+    user-select:none;
+}
+
+.d-track-main a:link,.d-track-main a:visited{
+    text-decoration:none;
+    color:#333;
+}
+
+.d-track-main a:hover{
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+.d-item-control{
+    position:absolute;
+    top:0;
+    right:0;
+    width:110px;
+    height:40px;
+}
+
+.d-item-control .icon-track-fav{
+    right:86px;
+}
+
+.icon-track-fav,.icon-track-more,.icon-track-delete{
+    width:18px;
+    height:18px;
+}
+
+.icon-track-fav{
+    background-position: -28px -130px;
+ }
+
+.d-m-track-item:hover .icon-track-fav,.d-m-current-item .icon-track-fav{
+    background-position:0 -155px;
+}
+
+.d-m-track-item:hover .icon-track-fav:hover,.d-m-current-item .icon-track-fav:hover{
+    background-position:-28px -155px;
+}
+
+.d-m-track-item .icon-track-more{
+    right:53px;
+    display:none;
+    background-position:0px -473px;
+}
+
+.d-m-track-item:hover .icon-track-more:hover,.d-m-current-item .icon-track-more:hover{
+    background-position:-28px -473px;
+}
+
+.d-m-track-item .icon-track-delete{
+    right:20px;
+    display:none;
+    background-position:0 -491px;
+}
+
+.d-m-track-item:hover .icon-track-delete:hover,.d-m-current-item .icon-track-delete:hover{
+    background-position:-28px -491px;
+}
+
+.d-item-control a{
+    display:block;
+    position:absolute;
+    top:11px;
+    cursor:pointer;
+}
+
+
+.d-m-track-item:hover .icon-track-more,.d-m-track-item:hover .icon-track-delete,.d-m-current-item .icon-track-more,.d-m-current-item .icon-track-delete{
+    display:block;
+}
+
+
+
 
 #b_player {
     height: 100%;

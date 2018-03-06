@@ -31,7 +31,7 @@
             var d_countTime = document.getElementById("d_countTime");
             var d_noVol = document.getElementById("d_volumeSpeaker");
 
-            var s_list = document.getElementById("s_list");
+            var s_list = document.getElementById("d_playlistViewCont");
             var $songs = s_list.getElementsByTagName("li");
             var lrc = data[0].lrc;
             var play = true;
@@ -50,18 +50,27 @@
                     //播放、暂停
                     a_play.onclick = function () {
                         if (play) {
-                            $audio.play();
+                            if ($audio.src)
+                                $audio.play();
+                            else {
+                                _this.playing(0);
+                                play = true;
+                                $(".d-m-row-item").eq(0).addClass("d-m-current-item");
+                            }
                             this.classList.remove("pause-btn");
+                            $("#main_middle").addClass("play");
                         }
                         else {
                             $audio.pause();
                             this.classList.add("pause-btn");
+                            $("#main_middle").removeClass("play");
                         }
                         play = !play;
                         d_countTime.innerHTML = time($audio.duration);
                     };
                     //上一首
                     a_prev.onclick = function () {
+                        $(".d-m-row-item").removeClass("d-m-current-item");
                         var state = $("#a_playState").attr("class");
                         switch (state) {
                             case "state-order":
@@ -69,16 +78,19 @@
                                 n--;
                                 if (n < 0) n = data.length - 1;
                                 _this.playing(n);
+                                $(".d-m-row-item").eq(n).addClass("d-m-current-item");
                                 break;
                             case "state-random":        //随机播放？？？
                                 m--;
                                 if (m < 0) m = data.length - 1;
                                 _this.playing(arr[m]);
+                                $(".d-m-row-item").eq(arr[m]).addClass("d-m-current-item");
                                 break;
                         }
                     };
                     //下一首
                     a_next.onclick = function () {
+                        $(".d-m-row-item").removeClass("d-m-current-item");
                         var state = $("#a_playState").attr("class");
                         switch (state) {
                             case "state-order":
@@ -86,13 +98,16 @@
                                 n++;
                                 if (n > data.length - 1) n = 0;
                                 _this.playing(n);
+                                $(".d-m-row-item").eq(n).addClass("d-m-current-item");
                                 break;
                             case "state-random":
                                 n++;
                                 if (n > data.length - 1) n = 0;
                                 _this.playing(arr[n]);
+                                $(".d-m-row-item").eq(arr[n]).addClass("d-m-current-item");
                                 break;
                         }
+
                     };
                     //点击播放
                     _this.listsPlay();
@@ -339,13 +354,36 @@
                 //点击列表播放
                 listsPlay: function () {
                     var _this = this;
-                    var $songs = s_list.getElementsByTagName("li");
+                    var $songs = s_list.getElementsByClassName("d-m-row-item");
+                    var songs = $(".d-m-row-item");
                     for (var i = 0; i < $songs.length; i++) {
                         (function (index) {
-                            $songs[index].onclick = function () {
+
+                            var time = null;
+
+                            songs.eq(index).click(function (e) {
+                                var obj = $(this);
+                                // 取消上次延时未执行的方法
+                                clearTimeout(time);
+                                //执行延时
+                                time = setTimeout(function () {
+                                    //do function在此处写单击事件要执行的代码
+                                    var s = !obj.find(".item-chk").prop("checked");
+                                    obj.find(".item-chk").prop("checked",s);
+                                }, 300);
+                            });
+
+                            songs.eq(index).dblclick(function () {
+                                // 取消上次延时未执行的方法
+                                clearTimeout(time);
+                                //双击事件的执行代码
+                                $(this).addClass("d-m-current-item");
+                                songs.not(this).removeClass("d-m-current-item");
                                 n = index;
                                 _this.playing(n);
-                            }
+                                $("#main_middle").addClass("play");
+                            });
+
                         })(i);
                     }
                 },
@@ -381,9 +419,37 @@
                 templateLists: function (data) {
                     var html = "";
                     for (var i = 0; i < data.length; i++) {
-                        html += "<li>" +
-                                "<a href='javascript:void(0)'>" + data[i].name + "</a>" +
-                                "</li>";
+                        //html += "<li>" +
+                        //        "<a href='javascript:void(0)'>" + data[i].name + "</a>" +
+                        //        "</li>";
+
+                        html += "<div class='d-m-row-item d-m-track-item'>" +
+                                  "<div class='d-track-main'>" +
+                                      "<div class='d-item-chks'>" +
+                                          "<input type='checkbox' class='item-chk' />" +
+                                      "</div>" +
+                                      "<div class='d-item-id'>" +
+                                          "<em>"+(i+1)+"</em>" +
+                                      "</div>" +
+                                      "<div class='d-row-item'>" +
+                                          "<div class='d-row-item-col c1'><a title='" + data[i].name + "'>" + data[i].name + "</a></div>" +
+                                          "<div class='d-row-item-co1 c2'><a title='" + data[i].singer + "'>" + data[i].singer + "</a></div>" +
+                                          "<div class='d-row-item-co1 c3'><a title='" + data[i].album + "'>" + data[i].album + "</a></div>" +
+                                      "</div>" +
+                                      "<div class='d-item-control'>" +
+                                          "<a class='fav-btn icon-track-fav' data-type='' data-event='collect' title='收藏'></a>" +
+                                          "<a class='more-btn icon-track-more' title='更多'></a>" +
+                                          "<a class='delete-btn icon-track-delete' title='删除'></a>" +
+                                      "</div>" +
+                                  "</div>" +
+                                  "<div class='d-roam-wrap'>"+
+                                      "<div class='d-roam-head'>"+
+                                          "<a class='a-roam-open' data-event='roam'>漫游相似歌曲</a>"+
+                                      "</div>"+
+                                  "</div>" +
+                              "</div>";
+
+
                     }
                     return html;
                 }
